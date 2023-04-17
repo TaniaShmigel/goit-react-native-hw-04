@@ -23,9 +23,9 @@ const LoginScreen = () => {
 
   const indicateBgImage = () => {
     const bgPath = {
-      general: require("../../assets/images/bg.jpg"),
-      big: require("../../assets/images/bg-2x.jpg"),
-      extrabig: require("../../assets/images/bg-3x.jpg"),
+      general: require("../../../assets/images/bg.jpg"),
+      big: require("../../../assets/images/bg-2x.jpg"),
+      extrabig: require("../../../assets/images/bg-3x.jpg"),
     };
 
     const currentPixelRatio = PixelRatio.get();
@@ -181,7 +181,14 @@ const LoginScreen = () => {
               </TouchableOpacity>
             </View>
           </KeyboardAvoidingView>
-          <Text style={styles.linkText}>Нет аккаунта? Зарегистрироваться</Text>
+          <TouchableOpacity
+            style={styles.loginLink}
+            onPress={() => navigation.navigate("Registration")}
+          >
+            <Text style={styles.linkText}>
+              Нет аккаунта? Зарегистрироваться
+            </Text>
+          </TouchableOpacity>
         </View>
       </ImageBackground>
     </TouchableWithoutFeedback>

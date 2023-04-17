@@ -33,9 +33,9 @@ const RegistrationScreen = () => {
 
   const indicateBgImage = () => {
     const bgPath = {
-      general: require("../../assets/images/bg.jpg"),
-      big: require("../../assets/images/bg-2x.jpg"),
-      extrabig: require("../../assets/images/bg-3x.jpg"),
+      general: require("../../../assets/images/bg.jpg"),
+      big: require("../../../assets/images/bg-2x.jpg"),
+      extrabig: require("../../../assets/images/bg-3x.jpg"),
     };
 
     const currentPixelRatio = PixelRatio.get();
@@ -270,7 +270,12 @@ const RegistrationScreen = () => {
                 </TouchableOpacity>
               </View>
             </KeyboardAvoidingView>
-            <Text style={styles.linkText}>Уже есть аккаунт? Войти</Text>
+            <TouchableOpacity
+              style={styles.loginLink}
+              onPress={() => navigation.navigate("Login")}
+            >
+              <Text style={styles.linkText}>Уже есть аккаунт? Войти</Text>
+            </TouchableOpacity>
           </View>
         </ScrollView>
       </ImageBackground>

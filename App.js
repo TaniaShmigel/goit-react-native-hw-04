@@ -1,12 +1,13 @@
-import { useCallback } from "react";
-import { StyleSheet, View } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+
+import { useCallback, useState } from "react";
+import { StyleSheet } from "react-native";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import RegistrationScreen from "./src/screens/RegistrationScreen";
-import LoginScreen from "./src/screens/LoginScreen";
+import useRoute from "./router";
 
 export default function App() {
-  SplashScreen.preventAutoHideAsync();
+  const [statusLog, setStatusLog] = useState(false);
 
   const [fontsLoaded] = useFonts({
     "Roboto-Regular": require("./src/fonts/Roboto-Regular.ttf"),
@@ -20,17 +21,14 @@ export default function App() {
     }
   }, [fontsLoaded]);
 
-  onLayoutRootView();
-
   if (!fontsLoaded) {
     return null;
   }
 
   return (
-    <View style={styles.container}>
-      <RegistrationScreen />
-      {/* <LoginScreen /> */}
-    </View>
+    <NavigationContainer onLayout={onLayoutRootView}>
+      {useRoute(statusLog)}
+    </NavigationContainer>
   );
 }
 
